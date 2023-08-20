@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTagsTable extends Migration
+class CreateAuditsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('tags')) {
-            Schema::create('tags', function (Blueprint $table) {
+        if (!Schema::hasTable('audits')) {
+            Schema::create('audits', function (Blueprint $table) {
                 $table->id();
-                $table->string('tag')->unique();
+                $table->unsignedBigInteger('user_id');
+                $table->string('file_path');
                 $table->timestamps();
+
+                $table->foreign('user_id')->references('id')->on('users');
             });
         }
     }
@@ -29,6 +32,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('audits');
     }
 }

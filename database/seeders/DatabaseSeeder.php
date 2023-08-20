@@ -6,6 +6,7 @@ use App\Models\{Category, User, Post};
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\SysConfig;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,21 +25,21 @@ class DatabaseSeeder extends Seeder
         ]);
         User::factory()->count(8)->create();
 
-        // insert default user 
+        // insert default user
         DB::table('users')->insert([
             [
-                'name' => 'samia',
-                'email' => 'mahisamia13@gmail.com',
+                'name' => 'hamid',
+                'email' => 'hamidsaid@gmail.com',
                 'password' => Hash::make('12345678'),
                 'role' =>   'admin',
                 'valid' => 1
             ]
         ]);
 
-        // insert tags 
+        // insert tags
         DB::table('tags')->insert([
             [
-                'tag' => 'Tag 1', 
+                'tag' => 'Tag 1',
             ],
             [
                 'tag' => 'Tag 2',
@@ -57,7 +58,7 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
-        // seed some posts 
+        // seed some posts
         foreach (range(1, 8) as $i) {
             $post = Post::factory()->create([
                 'user_id' => 14,
@@ -72,6 +73,18 @@ class DatabaseSeeder extends Seeder
             ]);
 
         }
+        SysConfig::create([
+            'key' => 'platform.chatgpt.api_key',
+            'value' => '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',
+        ]);
+        SysConfig::create([
+            'key' => 'platform.wp.wp_user_name',
+            'value' => 'GenuineRoot',
+        ]);
+        SysConfig::create([
+            'key' => 'platform.wp.wp_password',
+            'value' => 'RIcQ1KmOewE2SuwinEnolrmY',
+        ]);
     }
 
 }

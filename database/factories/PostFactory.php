@@ -25,7 +25,7 @@ class PostFactory extends Factory
             'title' => $this->faker->words(4, true),
             'excerpt' => $this->faker->paragraph($nbSentences = 5, $variableNbSentences = true),
             'body' => $this->faker->paragraphs($nb = 8, $asText = true),
-            'featured' => false,
+            'is_featured' => false,
         ];
     }
 }

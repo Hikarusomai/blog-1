@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTagsTable extends Migration
+class CreateSysConfigTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('tags')) {
-            Schema::create('tags', function (Blueprint $table) {
+        if (!Schema::hasTable('sys_config')) {
+            Schema::create('sys_config', function (Blueprint $table) {
                 $table->id();
-                $table->string('tag')->unique();
+                $table->string('key', 191)->unique();
+                $table->string('value', 191);
                 $table->timestamps();
             });
         }
@@ -29,6 +30,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('sys_config');
     }
 }

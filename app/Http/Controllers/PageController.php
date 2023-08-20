@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function index(){
-        $posts = Post::where('featured', false)
+        $posts = Post::where('is_featured', false)
                     ->with('user', 'categories')
                     ->get();
         $featured = Post::featured()->take(3)->get();
@@ -23,7 +23,7 @@ class PageController extends Controller
     public function posts(){
         return view('posts.index');
     }
-    
+
     public function showPost(Post $post){
         $post = $post->load('user','categories');
         return view('front.posts.show', compact('post'));

@@ -12,12 +12,12 @@ class Post extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'title', 
-        'slug', 
-        'excerpt', 
-        'body',  
-        'featured', 
-        'image', 
+        'title',
+        'slug',
+        'excerpt',
+        'body',
+        'is_featured',
+        'image',
     ];
 
     public function setTitleAttribute($value)
@@ -41,7 +41,7 @@ class Post extends Model
     }
 
     public function scopeFeatured($query){
-        return $query->where('featured', true);
+        return $query->where('is_featured', true);
     }
 
     public function previousPost(){
