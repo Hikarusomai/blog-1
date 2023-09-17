@@ -50,8 +50,8 @@ class CreateBlogs extends Command
      public function __construct(\GuzzleHttp\Client $client)
      {
         parent::__construct();
-        //  $this->api_key = SysConfig::where('key', 'platform.chatgpt.api_key')->first()->value ?? '';
-        //  $this->wp_user_name = SysConfig::where('key', 'platform.wp.wp_user_name')->first()->value ?? '';
+          $this->api_key = DB::table('sys_config')->where('key', 'platform.chatgpt.api_key')->first()->value ?? '';
+	Log::info($this->api_key);//  $this->wp_user_name = SysConfig::where('key', 'platform.wp.wp_user_name')->first()->value ?? '';
         //  $this->wp_password = SysConfig::where('key', 'platform.wp.wp_password')->first()->value ?? '';
         //  $this->WORDPRESS_SITE_URL = 'https://genuineroot.com';
         //  $this->client = $client;
@@ -70,14 +70,15 @@ class CreateBlogs extends Command
         Log::info('cronjon:started CreateBlog');
         //  return true;
         // $blogs = CronjobBlog::where('status',0)->get();
-        $blogs = DB::table('posts')->whereNull('description')->whereNull('content')->get();
+        $blogs = DB::table('posts')->where('excerpt','')->where('body','')->get();
         $client = new \GuzzleHttp\Client();
             $openaiClient = \Tectalic\OpenAi\Manager::build(
                 new \GuzzleHttp\Client(),
                 new \Tectalic\OpenAi\Authentication($this->api_key)
-            );
+	    );
+	Log::info(json_encode($blogs));
         foreach($blogs as $blog){
-            $prompt = $blog->name;
+            $prompt = $blog->title;
 
             if(!$blog->title){
                 $response = $openaiClient->completions()->create(
@@ -136,44 +137,46 @@ class CreateBlogs extends Command
             // ];
             // $data = $this->uploadImage($imageStream,$data);
             // Insert into posts table
-            DB::table('posts')->insert([
+	    DB::table('posts')->where('id',$blog->id)->update([
                 'id' => $blog->id,
-                'name' => $title,
-                'content' => $blogContent,
-                'description' => $title,
-                'status' => 'published',
-                'author_id' => 1,
-                'author_type' => 'Botble\\ACL\\Models\\User',
+		'title' => $title,
+		'user_id' => 14,
+                'body' => $blogContent,
+                'excerpt' => $title,
+                'slug'    => Str::slug($title),
+                // 'status' => 'published',
+                // 'body' => 1,
+                // 'author_type' => 'Botble\\ACL\\Models\\User',
                 'is_featured' => 0,
-                'views' => 0,
-                'format_type' => 'default',
+                // 'views' => 0,
+                // 'format_type' => 'default',
                 'created_at' => Carbon::parse('2023-08-20 01:27:36'),
                 'updated_at' => Carbon::parse('2023-08-20 01:27:36'),
             ]);
 
             // Insert into slugs table
-            DB::table('slugs')->insert([
-                'key' => Str::slug($title),
-                'reference_id' => $blog->id,
-                'reference_type' => 'Botble\\Blog\\Models\\Post',
-                'prefix' => '',
-                'created_at' => Carbon::parse('2023-08-20 00:07:55'),
-                'updated_at' => Carbon::parse('2023-08-20 00:07:55'),
-            ]);
+            // DB::table('slugs')->insert([
+            //     'key' => Str::slug($title),
+            //     'reference_id' => $blog->id,
+            //     'reference_type' => 'Botble\\Blog\\Models\\Post',
+            //     'prefix' => '',
+            //     'created_at' => Carbon::parse('2023-08-20 00:07:55'),
+            //     'updated_at' => Carbon::parse('2023-08-20 00:07:55'),
+            // ]);
 
             // Insert into post_categories table
-            DB::table('post_categories')->insert([
+            DB::table('category_post')->insert([
                 'category_id' => 1,
                 'post_id' => $blog->id,
             ]);
 
             // Insert into language_meta table
-            DB::table('language_meta')->insert([
-                'lang_meta_code' => 'en_US',
-                'lang_meta_origin' => '4b990d891c2c6db21628afb73646d6d5',
-                'reference_id' => $blog->id,
-                'reference_type' => 'Botble\\Blog\\Models\\Post',
-            ]);
+            // DB::table('language_meta')->insert([
+            //     'lang_meta_code' => 'en_US',
+            //     'lang_meta_origin' => '4b990d891c2c6db21628afb73646d6d5',
+            //     'reference_id' => $blog->id,
+            //     'reference_type' => 'Botble\\Blog\\Models\\Post',
+            // ]);
             // $insertedId = $post->id;
             // Category::create(['category_id'=>$blog->categories,'post_id'=>$insertedId]);
 

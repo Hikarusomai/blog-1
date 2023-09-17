@@ -24,7 +24,7 @@ class CreatePostsTable extends Migration
                 $table->string('slug')->unique();
                 $table->text('excerpt');
                 $table->text('body');
-                $table->boolean('featured')->default(false);
+                $table->boolean('is_featured')->default(false);
                 $table->string('image');
                 $table->timestamps();
             });

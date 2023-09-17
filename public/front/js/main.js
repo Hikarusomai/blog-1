@@ -1,12 +1,12 @@
 /* ===================================================================
- * Calvin 1.0.0 - Main JS
+ * Coveredinsunshine 1.0.0 - Main JS
  *
  * ------------------------------------------------------------------- */
 
 (function($) {
 
     "use strict";
-    
+
     const cfg = {
                 scrollDuration : 800, // smoothscroll duration
                 mailChimpURL   : ''   // mailchimp url
@@ -26,9 +26,9 @@
         if (!preloader) return;
 
         document.querySelector('html').classList.add('ss-preload');
-        
+
         window.addEventListener('load', function() {
-            
+
             document.querySelector('html').classList.remove('ss-preload');
             document.querySelector('html').classList.add('ss-loaded');
 
@@ -48,14 +48,14 @@
 
 
    /* Mobile Menu
-    * ---------------------------------------------------- */ 
+    * ---------------------------------------------------- */
     const ssMobileMenu = function() {
 
         const $navWrap = $('.s-header__nav-wrap');
         const $closeNavWrap = $navWrap.find('.s-header__overlay-close');
         const $menuToggle = $('.s-header__toggle-menu');
         const $siteBody = $('body');
-        
+
         $menuToggle.on('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
@@ -66,13 +66,13 @@
         $closeNavWrap.on('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-        
+
             if($siteBody.hasClass('nav-wrap-is-visible')) {
                 $siteBody.removeClass('nav-wrap-is-visible');
             }
         });
 
-        // open (or close) submenu items in mobile view menu. 
+        // open (or close) submenu items in mobile view menu.
         // close all the other open submenu items.
         $('.s-header__nav .has-children').children('a').on('click', function (e) {
             e.preventDefault();
@@ -187,12 +187,13 @@
             cssEase: 'linear',
             autoplay: false,
             autoplaySpeed: 5000,
-            pauseOnHover: false
+            pauseOnHover: false,
+            infinite: false,
         });
 
         $heroSlider.on('beforeChange', function(event, slick, currentSlide){
             $animateEl.removeClass('animated');
-        });    
+        });
         $heroSlider.on('afterChange', function(event, slick, currentSlide){
             $animateEl.addClass('animated');
         });
@@ -211,7 +212,7 @@
    /* Animate on Scroll
     * ------------------------------------------------------ */
     const ssAOS = function() {
-        
+
         AOS.init( {
             offset: 100,
             duration: 800,
@@ -240,7 +241,7 @@
                     setTimeout(function() {
                         box.style.display = "none";
                     }, 500)
-                }    
+                }
             });
 
         })
@@ -251,11 +252,11 @@
    /* Smooth Scrolling
     * ------------------------------------------------------ */
     const ssSmoothScroll = function() {
-        
+
         $('.smoothscroll').on('click', function (e) {
             const target = this.hash;
             const $target = $(target);
-            
+
             e.preventDefault();
             e.stopPropagation();
 

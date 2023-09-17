@@ -25,7 +25,7 @@
                         <div class="card-body">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" name="featured" for="exampleCheck1">Featured Post</label>
+                                <label class="form-check-label" name="is_featured" for="exampleCheck1">Featured Post</label>
                             </div>
                             <div class="form-group">
                                 <label for="title">Post Title </label>

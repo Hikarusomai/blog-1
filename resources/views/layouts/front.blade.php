@@ -6,7 +6,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Calvin</title>
+    <title>Coveredinsunshine</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -50,7 +50,7 @@
 
         <div class="s-header__logo">
             <a class="logo" href="{{ route('home') }}">
-                <img src="{{ asset('images/logo.svg') }}" alt="Homepage">
+                <img src="{{ asset('images/COVEREDINSUNSHINE.png') }}" alt="Homepage"> <!-- .svg -->
             </a>
         </div>
 
@@ -102,7 +102,7 @@
             <div class="row">
                 <div class="column">
                     <div class="ss-copyright">
-                        <span>© Copyright Calvin 2020</span>
+                        <span>© Copyright Coveredinsunshine 2020</span>
                         <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
                     </div> <!-- end ss-copyright -->
                 </div>

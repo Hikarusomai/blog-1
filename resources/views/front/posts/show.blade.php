@@ -21,8 +21,12 @@
 
                         <div class="s-content__entry-content">
 
-                            <p class="lead">
-                                {{ $post->body }}
+			    <p class="lead">
+				@if (strip_tags($post->body) != $post->body)
+				 {!! $post->body !!}
+				@else
+                                 {{ $post->body }}
+				@endif
                             </p>
 
 

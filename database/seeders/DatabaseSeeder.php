@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
             $post = Post::factory()->create([
                 'user_id' => 14,
                 'image' => 'img0' . $i . '.jpg',
-                'featured' => $i<4 ? true : false ,
+                'is_featured' => $i<4 ? true : false ,
             ]);
             $category = Category::factory()->create();
 

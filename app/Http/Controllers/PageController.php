@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function index(){
+    public function index(Category $category){
         $posts = Post::where('is_featured', false)
                     ->with('user', 'categories')
                     ->get();
-        $featured = Post::featured()->take(3)->get();
-        // dd($featured);
+        $featured = Post::featured()->limit(4)->get();
+        // dd($posts);
         return view('front.index', [
             'posts' => $posts,
             'featured' => $featured

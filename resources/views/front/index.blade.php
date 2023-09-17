@@ -12,7 +12,7 @@
                             <div class="column">
                                 <div class="s-hero__slide-meta">
                                     <span class="cat-links">
-                                        <a href="#0">{{ $post->categories->first()->title }}</a>
+                                        <a href="#0">{{ $post->categories->count()>0 ? $post->categories->first()->title : '' }}</a>
                                     </span>
                                     <span class="byline">
                                         Posted by
@@ -83,7 +83,7 @@
                                                 </span>
                                             </span>
                                             <span class="cat-links">
-                                                <a href="#">{{ $post->categories->first()->title }}</a>
+                                                <a href="#">{{ $post->categories->count()>0 ? $post->categories->first()->title : '' }}</a>
                                             </span>
                                         </div>
                                     </div>
