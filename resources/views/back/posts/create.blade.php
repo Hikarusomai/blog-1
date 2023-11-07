@@ -1,4 +1,5 @@
 @extends('layouts.back')
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 @section('breadcrumb')
     <div class="col-sm-6">
         <h1 class="m-0">Dashboard</h1>
@@ -33,11 +34,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="excerpt">Post Excerpt</label>
-                                <textarea id="excerpt" name="excerpt" class="form-control" rows="4" required></textarea>
+                                <textarea id="excerpt" name="excerpt" class="form-control" rows="4" ></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="description">Post Description</label>
-                                <textarea id="description" name="body" class="form-control" rows="4" required></textarea>
+                                <textarea id="description" name="body" class="form-control" rows="4" ></textarea>
                             </div>
 
                             <div class="form-group">
@@ -86,3 +87,9 @@
     </section>
     <!-- /.content -->
 @endsection
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+var quill = new Quill('#description', {
+    theme: 'snow'
+});
+</script>

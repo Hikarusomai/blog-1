@@ -1,4 +1,5 @@
 @extends('layouts.back')
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 @if (session()->has('updatePostSuccess'))
     @section('alerts')
         <div class="alert alert-success alert-dismissible fade show light-green" role="alert">
@@ -106,3 +107,9 @@
     </section>
     <!-- /.content -->
 @endsection
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+var quill = new Quill('#description', {
+    theme: 'snow'
+});
+</script>
