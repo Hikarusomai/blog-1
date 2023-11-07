@@ -1,5 +1,6 @@
 @extends('layouts.back')
-<script src="https://cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor5/40.0.0/ckeditor.min.js"></script>
 @section('breadcrumb')
     <div class="col-sm-6">
         <h1 class="m-0">Dashboard</h1>
@@ -88,5 +89,7 @@
     <!-- /.content -->
 @endsection
 <script>
-    CKEDITOR.replace( 'body' );
+    ClassicEditor.create(document.querySelector("#description")).catch((error) => {
+    console.error(error);
+    });
 </script>

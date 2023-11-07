@@ -1,5 +1,6 @@
 @extends('layouts.back')
-<script src="https://cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor5/40.0.0/ckeditor.min.js"></script>
 @if (session()->has('updatePostSuccess'))
     @section('alerts')
         <div class="alert alert-success alert-dismissible fade show light-green" role="alert">
@@ -108,5 +109,7 @@
     <!-- /.content -->
 @endsection
 <script>
-    CKEDITOR.replace( 'body' );
+    ClassicEditor.create(document.querySelector("#body")).catch((error) => {
+    console.error(error);
+    });
 </script>
