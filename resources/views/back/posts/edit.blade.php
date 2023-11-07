@@ -1,5 +1,5 @@
 @extends('layouts.back')
-<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
 @if (session()->has('updatePostSuccess'))
     @section('alerts')
         <div class="alert alert-success alert-dismissible fade show light-green" role="alert">
