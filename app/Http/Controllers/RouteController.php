@@ -19,7 +19,11 @@ class RouteController extends Controller
 
         $xml = view('xml', compact('routes'))->render();
 
-        return Response::make($xml, 200, ['Content-Type' => 'application/xml']);
+        return Response::make($xml, 200, [
+            'Content-Type' => 'application/xml',
+            'Content-Disposition' => 'attachment; filename="routes.xml"',
+        ]);
+
     }
 
     public function downloadRoutesXml()
