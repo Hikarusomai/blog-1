@@ -108,5 +108,5 @@
     <!-- /.content -->
 @endsection
 <script>
-    CKEDITOR.replace( 'description' );
+    CKEDITOR.replace( 'body' );
 </script>
