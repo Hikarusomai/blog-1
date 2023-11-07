@@ -17,7 +17,7 @@ class RouteController extends Controller
             ];
         });
 
-        $xml = view('routes.xml', compact('routes'))->render();
+        $xml = view('xml', compact('routes'))->render();
 
         return Response::make($xml, 200, ['Content-Type' => 'application/xml']);
     }
@@ -31,9 +31,9 @@ class RouteController extends Controller
             ];
         });
 
-        $xml = view('routes.xml', compact('routes'))->render();
+        $xml = view('xml', compact('routes'))->render();
 
-        $filename = 'routes.xml';
+        $filename = 'xml';
 
         return Response::make($xml, 200, [
             'Content-Type' => 'application/xml',
