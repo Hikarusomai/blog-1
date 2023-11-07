@@ -1,5 +1,5 @@
 @extends('layouts.back')
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 @section('breadcrumb')
     <div class="col-sm-6">
         <h1 class="m-0">Dashboard</h1>
@@ -87,9 +87,6 @@
     </section>
     <!-- /.content -->
 @endsection
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script>
-var quill = new Quill('#description', {
-    theme: 'snow'
-});
+    CKEDITOR.replace( 'description' );
 </script>
