@@ -1,5 +1,4 @@
 @extends('layouts.back')
-<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor5/40.0.0/ckeditor.min.js"></script>
 @if (session()->has('updatePostSuccess'))
     @section('alerts')
