@@ -87,7 +87,19 @@
     <!-- /.content -->
 @endsection
 <script>
-    ClassicEditor.create(document.querySelector("#description")).catch((error) => {
-    console.error(error);
+
+    CKEDITOR.replace( 'body' );
+    CKEDITOR.on( 'instanceReady', function( evt )
+    {
+        var editor = evt.editor;
+
+    editor.on('change', function (e) {
+        var contentSpace = editor.ui.space('contents');
+        var ckeditorFrameCollection = contentSpace.$.getElementsByTagName('iframe');
+        var ckeditorFrame = ckeditorFrameCollection[0];
+        var innerDoc = ckeditorFrame.contentDocument;
+        var innerDocTextAreaHeight = $(innerDoc.body).height();
+        console.log(innerDocTextAreaHeight);
+        });
     });
 </script>
