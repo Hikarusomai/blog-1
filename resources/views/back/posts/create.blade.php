@@ -1,5 +1,4 @@
 @extends('layouts.back')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor5/40.0.0/ckeditor.min.js"></script>
 @section('breadcrumb')
     <div class="col-sm-6">
         <h1 class="m-0">Dashboard</h1>
