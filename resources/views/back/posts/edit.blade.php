@@ -27,7 +27,7 @@
             @csrf
             @method('PUT')
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">General</h3>
@@ -61,7 +61,7 @@
                     </div>
                     <!-- /.card -->
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card card-secondary">
                         <div class="card-header">
                             <h3 class="card-title">Extra</h3>
