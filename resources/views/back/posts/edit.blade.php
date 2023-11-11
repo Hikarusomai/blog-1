@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="image">New Image</label>
-                                <input type="file" name="image" class="form-control-file" id="image" required>
+                                <input type="file" name="image" class="form-control-file" id="image">
                             </div>
 
                         </div>
