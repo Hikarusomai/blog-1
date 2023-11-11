@@ -33,7 +33,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="excerpt">Post Excerpt</label>
-                                <textarea id="excerpt" name="excerpt" class="form-control" rows="4" ></textarea>
+                                <input type="text" id="excerpt" name="excerpt" class="form-control" />
                             </div>
                             <div class="form-group">
                                 <label for="description">Post Description</label>

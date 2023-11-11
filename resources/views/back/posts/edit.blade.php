@@ -40,8 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="resume">Post Excerpt</label>
-                                <textarea id="resume" name="excerpt" class="form-control"
-                                    rows="3">{{ $post->excerpt }}</textarea>
+                                <input type="text" class="form-control" id="resume" name="excerpt" class="form-control" value="{{ $post->excerpt }}" />
                             </div>
                             <div class="form-group">
                                 <label for="body">Post Description</label>

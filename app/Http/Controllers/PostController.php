@@ -43,13 +43,17 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {       
+    {
         // dd($request);
         if($request->has('image')){
             $this->uploadImage($request);
         }
-        $request->user()->posts()->create($request->post());
-
+        $post = $request->user()->posts()->create($request->post());
+        // Attach the post to the specified category (assuming you have a category_id in the request)
+        $category_id = $request->input('category');
+        if ($category_id) {
+            $post->categories()->attach($category_id);
+        }
         return redirect()->route('posts.index')->with('message', 'Post created successfully');
     }
 
@@ -117,7 +121,7 @@ class PostController extends Controller
     public function uploadImage($request){
         $image = $request->file('image');
         $imageName = time().$image->getClientOriginalName();
-        // add the new file 
+        // add the new file
         $image->move(public_path('images'),$imageName);
         $request->merge(['image' => $imageName]);
         // dd($request);
